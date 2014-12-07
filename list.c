@@ -8,8 +8,8 @@ List* add(List *l, int k) {
 	return nouv;
 }
 
-void clear(List *l) {
-	while (l != NULL) {
+void free_list(List *l) {
+	while (l) {
 		List *tmp = l->next;
 		free(l);
 		l = tmp;

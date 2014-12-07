@@ -7,6 +7,6 @@ typedef struct List {
 } List;
 
 List *add(List *, int);
-void clear(List *);
+void free_list(List *);
 
 #endif

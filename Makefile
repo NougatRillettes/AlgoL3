@@ -1,5 +1,5 @@
-SOURCE=main.c list.c
-FLAGS= -O3
+SOURCE=main.c list.c graph.c set.c
+FLAGS= -O0 -g
 EXEC=algo
 
 all:

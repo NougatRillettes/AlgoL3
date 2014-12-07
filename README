@@ -1,0 +1,1 @@
+convention : toutes les fonctions qui renvoient un pointeur renvoient un nouveau pointeur plutôt que de modifier leurs arguments.
