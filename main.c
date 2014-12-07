@@ -18,9 +18,10 @@ Graph* init() {
 }
 
 void clean_exit(Graph *g) {
-	for (int i = 0; i < g->vertices; g++)
+	for (int i = 0; i < g->vertices; i++)
 		clear(g->adj[i]);
-	free(g);
+        free(g->adj);
+        free(g);
 }
 
 int main(int argc, const char *argv[]) {
@@ -28,29 +29,3 @@ int main(int argc, const char *argv[]) {
 	clean_exit(g);
 	return 0;
 }
-
-/* Test code, which doesn't segfault */
-/*
-int main(void) { 
-	Graph *g = malloc(sizeof(Graph));
-	int k;
-	scanf("%d", &k);
-	g->vertices = k;
-	g->adj = calloc(g->vertices, sizeof(List *));
-	for (int i = 0; i < k; i++)
-		for (int j = 0; j < (i+1)*k; j++)
-			g->adj[i] = add(g->adj[i], j);
-	for (int i = 0; i < k; i++) {
-		List *l = g->adj[i];
-		while (l) {
-			printf("%d ", l->val);
-			l = l->next;
-		}
-		printf("\n");
-	}
-	for (int i = 0; i < k; i++)
-		clear(g->adj[i]);
-	free(g);
-	return 0;
-}
-*/
