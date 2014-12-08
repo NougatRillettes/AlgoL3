@@ -7,3 +7,4 @@ all:
 
 clean:
 	rm $(EXEC)
+	rm -r $(EXEC)*

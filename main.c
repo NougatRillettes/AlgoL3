@@ -55,11 +55,9 @@ int main(int argc, const char *argv[]) {
 	Graph *comp = complement(g);
 	Set *clique = max_clique(comp);
 
-	print_graph(g);
-	print_graph(comp);
-
 	for (int i = 0; i < clique->size; i++)
 		clique->elem[i] = !clique->elem[i];
+	clique->nelem = graph->vertices - clique->nelem;
 	print_set(clique);
 
 	free_set(clique);

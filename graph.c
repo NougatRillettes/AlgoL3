@@ -39,7 +39,7 @@ Graph *complement(Graph *graph) { /* Without self-pointing edges */
 	Graph *new = malloc(sizeof(Graph));
 
 	new->vertices = graph->vertices;
-	new->edges = (graph->vertices*graph->vertices)-graph->edges-graph->vertices;
+	new->edges = (graph->vertices*graph->vertices) - graph->edges - graph->vertices;
 	new->adj = calloc(new->vertices, sizeof(Set *));
 
 	for (int i = 0; i < new->vertices; i++) {
