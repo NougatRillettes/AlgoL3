@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "graph.h"
 #include "list.h"
 #include "set.h"
@@ -51,18 +52,24 @@ Set *max_clique(Graph *graph) {
 }
 
 int main(int argc, const char *argv[]) {
-	Graph *g = init_graph();
-	Graph *comp = complement(g);
+	Graph *graph = init_graph();
+	Graph *comp = complement(graph);
+	clock_t temps = clock();
+	
 	Set *clique = max_clique(comp);
+	
+	temps = clock()-temps;
 
 	for (int i = 0; i < clique->size; i++)
 		clique->elem[i] = !clique->elem[i];
 	clique->nelem = graph->vertices - clique->nelem;
+
 	print_set(clique);
+	printf("Elapsed time : %.3lf ms\n", ((double)temps)/1000.);
 
 	free_set(clique);
 	free_graph(comp);
-	free_graph(g);
+	free_graph(graph);
 
 	return 0;
 }
