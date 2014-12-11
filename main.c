@@ -6,7 +6,7 @@
 #include "set.h"
 
 void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
-	int u;
+	int u, max = 0;
 	if (cands->nelem == 0) {
 		if (cur->nelem > ans->nelem) {
 			ans->nelem = cur->nelem;
@@ -18,8 +18,14 @@ void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
 
 	for (int i = 0; i < graph->vertices; i++)
 		if (cands->elem[i]) {
-			u = i;
-			break;
+			int k = 0;
+			for (int j = 0; j < graph->vertices; j++)
+				if (cands->elem[j] && graph->adj[i]->elem[j])
+					k++;
+			if (k >= max) {
+				max = k;
+				u = i;
+			}
 		}
 	
 	Set *test = minus(cands, graph->adj[u]);
