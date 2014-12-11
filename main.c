@@ -6,6 +6,7 @@
 #include "set.h"
 
 void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
+	int u;
 	if (cands->nelem == 0) {
 		if (cur->nelem > ans->nelem) {
 			ans->nelem = cur->nelem;
@@ -14,8 +15,15 @@ void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
 		}
 		return;
 	}
+
 	for (int i = 0; i < graph->vertices; i++)
-		if (cands->elem[i]) {
+		if (cur->elem[i])
+			u = i;
+	
+	Set *test = inter(cands, graph->adj[u]);
+
+	for (int i = 0; i < graph->vertices; i++)
+		if (test->elem[i]) {
 			Set *new_cands = inter(cands, graph->adj[i]);
 			Set *new_rem = inter(rem, graph->adj[i]);
 			cur->elem[i] = true;
@@ -30,6 +38,8 @@ void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
 			cands->elem[i] = false;
 			cands->nelem--;
 		}
+
+	free_set(test);
 }
 
 Set *max_clique(Graph *graph) {
