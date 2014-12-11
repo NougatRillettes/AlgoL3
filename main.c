@@ -17,8 +17,10 @@ void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
 	}
 
 	for (int i = 0; i < graph->vertices; i++)
-		if (cands->elem[i])
+		if (cands->elem[i]) {
 			u = i;
+			break;
+		}
 	
 	Set *test = minus(cands, graph->adj[u]);
 
