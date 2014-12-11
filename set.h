@@ -11,6 +11,7 @@ typedef struct Set {
 void free_set(Set *);
 Set *empty_set(int); /* Size of the set */
 Set *inter(Set *, Set *);
+Set *minus(Set *, Set *);
 
 void print_set(Set *);
 

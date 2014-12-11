@@ -17,10 +17,10 @@ void backtrack(Graph *graph, Set *cur, Set *cands, Set *rem, Set *ans) {
 	}
 
 	for (int i = 0; i < graph->vertices; i++)
-		if (cur->elem[i])
+		if (cands->elem[i])
 			u = i;
 	
-	Set *test = inter(cands, graph->adj[u]);
+	Set *test = minus(cands, graph->adj[u]);
 
 	for (int i = 0; i < graph->vertices; i++)
 		if (test->elem[i]) {

@@ -23,10 +23,20 @@ void print_set(Set *s) {
 	printf("\n");
 }
 
-Set *inter(Set *s1, Set *s2) { /* We assume s1->size == s2->size */
+Set *inter(Set *s1, Set *s2) { /* We assume s1->size equals s2->size */
 	Set *ans = empty_set(s1->size);
 	for (int i = 0; i < ans->size; i++)
 		if (s1->elem[i] && s2->elem[i]) {
+			ans->elem[i] = true;
+			ans->nelem++;
+		}
+	return ans;
+}
+
+Set *minus(Set *s1, Set *s2) { /* Returns s1 \ s2 */
+	Set *ans = empty_set(s1->size);
+	for (int i = 0; i < ans->size; i++)
+		if (s1->elem[i] && !s2->elem[i]) {
 			ans->elem[i] = true;
 			ans->nelem++;
 		}
