@@ -16,7 +16,7 @@ Graph* init_graph() {
 	for (int i = 0; i < graph->edges; i++) {
 		int begin, end;
 		scanf("%d%d", &begin, &end);
-		graph->adj[begin]->nelem++;
+                graph->adj[begin]->nelem++;
 		graph->adj[begin]->elem[end] = true;
 		graph->adj[end]->nelem++;
 		graph->adj[end]->elem[begin] = true;

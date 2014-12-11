@@ -65,22 +65,22 @@ Set *max_clique(Graph *graph) {
 
 int main(int argc, const char *argv[]) {
 	Graph *graph = init_graph();
-	Graph *comp = complement(graph);
+        //	Graph *comp = complement(graph);
 	clock_t temps = clock();
 	
-	Set *clique = max_clique(comp);
+	Set *clique = max_clique(graph);
 	
 	temps = clock()-temps;
 
-	for (int i = 0; i < clique->size; i++)
-		clique->elem[i] = !clique->elem[i];
-	clique->nelem = graph->vertices - clique->nelem;
+	/* for (int i = 0; i < clique->size; i++) */
+	/* 	clique->elem[i] = !clique->elem[i]; */
+	/* clique->nelem = graph->vertices - clique->nelem; */
 
 	print_set(clique);
-	printf("Elapsed time : %.3lf ms\n", ((double)temps)/1000.);
+	printf("Elapsed time: %.3lf ms\n", ((double)temps)/1000.);
 
 	free_set(clique);
-	free_graph(comp);
+	//free_graph(comp);
 	free_graph(graph);
 
 	return 0;
